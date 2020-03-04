@@ -60,59 +60,58 @@
 # b: It takes 0 seconds to move from b -> b
 # The total time is 7.
 
-class Grid
-  attr_accessor :grid
+class Keypad
+  attr_accessor :keypad
 
-  def initialize(grid_string)
-    @grid = [[],[],[],[]]
-
-    string_index = 0
-
-    (0..3).each do |row_index|
-      (0..3).each do |column_index|
-        @grid[row_index][column_index] = grid_string[string_index]
-
-        string_index += 1
-      end
-    end
+  def initialize(keypad)
+    @keypad = keypad
   end
 
   def print
-    puts @grid.inspect
+    puts @keypad.inspect
   end
 
   def distance(a, b)
-
+    distanceByIndex(index(a), index(b))
   end
 
-  def row_inxex(key)
+  private
 
+  def distanceByIndex(index_a, index_b)
+    row_a = index_a % 4
+    row_b = index_b % 4
+
+    row_distance = (row_a - row_b).abs
+
+    column_a = index_a / 4
+    column_b = index_b / 4
+
+    column_distance = (column_a - column_b).abs
+
+    row_distance > column_distance ? row_distance : column_distance
   end
 
-  def column_index(key)
-
+  def index(key)
+    @keypad.index(key)
   end
 end
 
 def entryTime(password, keypad)
-  former_button_press_index = 0
-  latter_button_press_index = 1
   sum = 0
+  keypad = Keypad.new(keypad)
 
-  grid = Grid.new("0123456789abcdef")
+  password.split("").each_with_index do |key_press, index|
+    next_key_press = password[index + 1]
+    break if next_key_press.nil?
 
-  while b < password.length
-    sum += grid.distance(password[a], password[b])
-
-    a += 1
-    b += 1
+    sum += keypad.distance(key_press, next_key_press)
   end
+
+  sum
 end
 
-def distance(index_a, index_b)
+puts entryTime("15ebb", "0123456789abcdef")
 
-end
-
-# entryTime("15ebb", "0123456789abcdef")
+puts entryTime("15ebb", "9ab567cd480e123f")
 
 
