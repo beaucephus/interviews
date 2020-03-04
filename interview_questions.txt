@@ -1,0 +1,17 @@
+Interview questions
+
+Projects you are proud of?
+  What was your contribution?
+
+Linux experience?
+
+Favorite coding language?
+  Why?
+
+What are some differences between python and bash scripting languages?
+
+How to set up SSL on apache HTTP server?
+
+What is a git merge conflict?
+  What scenario might trigger a conflict?
+
