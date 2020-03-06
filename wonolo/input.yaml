@@ -1,0 +1,7 @@
+---
+targets:
+  - "tyler@localhost"
+resources:
+  - type: "file"
+    name: "deleteme"
+    action: "create"
