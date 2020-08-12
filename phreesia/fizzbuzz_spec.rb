@@ -10,7 +10,7 @@ RSpec.describe "max_validator" do
 
 
   it "returns an Integer matching input" do
-    expect(max_validator(1)).to be(1)
+    expect(max_validator('1')).to be(1)
   end
 
 

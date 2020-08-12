@@ -1,16 +1,8 @@
+Dir["./printers/*.rb"].each { |file| require file }
 
-
-def fizzbuzz(maxnum, fizz_string, buzz_string)
+def fizzbuzz(maxnum, printer)
   (1..maxnum.to_i).each do |n|
-    if n.modulo(15) == 0
-      puts "#{fizz_string}#{buzz_string}"
-    elsif n.modulo(3) == 0
-      puts fizz_string
-    elsif n.modulo(5) == 0
-      puts buzz_string
-    else
-      puts n
-    end
+    Printer.new.print(n, printer)
   end
 end
 
