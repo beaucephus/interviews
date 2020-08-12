@@ -11,39 +11,15 @@ end
 #
 #
 def max_validator(input)
+  max_allowed = 100
   begin
-    return 100 if input.nil? || input.empty?
+    candidate = Integer(input)
 
-    Integer(input)
-  rescue ArgumentError
+    oob = candidate < 1 || candidate > max_allowed
+    raise "Max count must be an integer between 1 and #{max_allowed}" if oob
+
+    candidate
+  rescue ArgumentError, TypeError
     raise "Failed to convert input to integer. Please provide an integer input."
-  end
-end
-
-# Returns validated input.
-# Fizz String.
-#
-#
-def fizz_validator(input)
-  begin
-    return "fizz" if input.nil? || input.empty?
-
-    String(input)
-  rescue ArgumentError
-    raise "Failed to convert Fizz input to String. Please provide a String input."
-  end
-end
-
-# Returns validated input.
-# Buzz String.
-#
-#
-def buzz_validator(input)
-  begin
-    return "buzz" if input.nil? || input.empty?
-
-    String(input)
-  rescue ArgumentError
-    raise "Failed to convert Buzz input to String. Please provide a String input."
   end
 end
